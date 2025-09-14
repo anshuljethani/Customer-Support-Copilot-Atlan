@@ -188,10 +188,9 @@ QDRANT_VECTOR_NAME=doc_dense_vector
 QDRANT_TOP_K=3
 
 PRIORITY_MODEL=valhalla/distilbart-mnli-12-1
-SENTIMENT_EXACT_MODEL=facebook/bart-large-mnli
-GENERAL_SENTIMENT_MODEL=michellejieli/emotion_text_classifier
+SENTIMENT_EXACT_MODEL=michellejieli/emotion_text_classifier
 KEYWORDS_MODEL=ilsilfverskiold/tech-keywords-extractor
-TOPIC_MODEL=facebook/bart-large-mnli
+TOPIC_MODEL=MoritzLaurer/deberta-v3-base-zeroshot-v1
 ```
 
 ---
