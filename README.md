@@ -263,9 +263,9 @@ python -m http.server 8080
 
 ## 🎬 Project Demonstration
 
-**Video Link**: [{link}](https://drive.google.com/drive/folders/1vJFVxe3CQVjaf18zNcP1fk3wtpNqv0ng?usp=sharing)
+**Video Link**: [Video Link](https://drive.google.com/drive/folders/1vJFVxe3CQVjaf18zNcP1fk3wtpNqv0ng?usp=sharing)
 
-**Deployed Project**: {link}
+**Deployed Project**: Project was not deployed. 
 
 ---
 
