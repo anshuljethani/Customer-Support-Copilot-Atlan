@@ -24,17 +24,18 @@ def keyword_calculation(text: str) -> str:
     Calculates keywords from the given text using a text-to-text generation model.
     """
     if "keyword_pipe" not in _pipelines:
-        model_id = os.getenv("KEYWORDS_MODEL", "ilsilfverskiold/tech-keywords-extractor")
+        # Switch to a lighter text2text model for keyphrase generation
+        model_id = os.getenv("KEYWORDS_MODEL", "ml6team/keyphrase-generation-t5-base-inspec")
         _pipelines["keyword_pipe"] = pipeline("text2text-generation", model=model_id, max_new_tokens=64)
 
     pipe = _pipelines["keyword_pipe"]
-    
+
     result = pipe(text)
     keywords_str = result[0]['generated_text']
 
-    keywords_list = [kw.strip() for kw in keywords_str.split(',')]
+    # Ensure consistent formatting
+    keywords_list = [kw.strip() for kw in keywords_str.split(',') if kw.strip()]
     return ', '.join(keywords_list)
-
 
 def topic_calculation(text: str) -> str:
     """
