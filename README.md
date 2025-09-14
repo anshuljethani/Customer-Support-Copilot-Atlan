@@ -219,7 +219,7 @@ Refer to the environment variables section above.
 
 ```bash
 # Clone repository
-git clone <https://github.com/anshuljethani/Customer-Support-copilot-Atlan>
+git clone <https://github.com/anshuljethani/Customer-Support-Copilot-Atlan>
 
 # Install dependencies
 pip install -r requirements.txt
