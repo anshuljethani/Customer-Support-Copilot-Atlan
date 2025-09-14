@@ -9,14 +9,24 @@ from services.qdrant_service import search_text, insert_point, retrieve_llm_resp
 from pipeline.ai_pipeline import ai_pipeline
 from pipeline.ml_processing import _pipelines
 from utils.fetch import fetch_tickets
-from config import FRONTEND_ORIGIN, QDRANT_TOP_K
-from config import QDRANT_URL, QDRANT_API_KEY, QDRANT_COLLECTION, OPENAI_API_KEY, QDRANT_COLLECTION_2, QDRANT_COLLECTION_3
+import os
+from dotenv import load_dotenv
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+QDRANT_URL = os.getenv("QDRANT_URL")
+QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION")
+QDRANT_COLLECTION_2 = os.getenv("QDRANT_COLLECTION_2")
+QDRANT_COLLECTION_3 = os.getenv("QDRANT_COLLECTION_3")
+QDRANT_VECTOR_NAME = os.getenv("QDRANT_VECTOR_NAME")
+QDRANT_TOP_K = int(os.getenv("QDRANT_TOP_K", 3))
 
-# Initialize the Flask application
+VECTOR_NAME = QDRANT_VECTOR_NAME
+FRONTEND_ORIGIN=os.getenv("FRONTEND_ORIGIN")
+
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)  
 
-# Initialize Qdrant client with error handling
 try:
     qdrant_client = QdrantClient(
         url=os.getenv("QDRANT_URL"),
@@ -41,15 +51,13 @@ def handle_input():
         processed_data = ai_pipeline(data)
         
         if any("error" in item for item in processed_data):
-            # If any item failed to process, return a 500
             return jsonify(processed_data), 500
         
         return jsonify(processed_data), 200
 
     except Exception as e:
-        # Catch any exceptions during request parsing or pipeline execution
         print("An error occurred:")
-        traceback.print_exc() # This will print the full traceback to your terminal
+        traceback.print_exc() 
         return jsonify({"error": "Internal server error. Check the server logs for details."}), 500
 
 @app.route("/chat", methods=["POST"])
