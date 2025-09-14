@@ -18,15 +18,18 @@ The Customer Support Copilot is an enterprise-grade solution that automates the 
 
 ## 🏗️ System Architecture
 
-{diagram}
+![IMG_3233](https://github.com/user-attachments/assets/e9ecde67-0dba-4fd6-b225-f0243cfd063e)
 
-{diagram}
+
+![IMG_3235](https://github.com/user-attachments/assets/e043ed4e-7bcf-4072-8bb1-c31e99186b46)
+
 
 ### **Core Philosophy: The Power of Three**
 
 This system is built on a fundamental architectural principle - **only 3 core API calls** handle the entire data processing pipeline:
 
-{diagram}
+![IMG_3231](https://github.com/user-attachments/assets/b4a08655-4572-4bb2-a34f-3553802bcfea)
+
 
 > This elegant simplicity ensures maintainability, scalability, and performance while delivering enterprise-grade functionality.
 
@@ -34,9 +37,24 @@ This system is built on a fundamental architectural principle - **only 3 core AP
 
 ## 🧠 Backend Architecture
 
-{diagram}
-
 ### **1. ML Processing Pipeline**
+
+![IMG_3232](https://github.com/user-attachments/assets/7360b46a-7503-4bcc-8240-e4957a6a252f)
+
+#### **`ai_pipeline.py`**
+- Coordinates entire AI processing pipeline from raw input to database storage
+- Validates incoming ticket data, handles format normalization
+- Manages communication between ml_processing.py and db_connector.py
+
+#### **`ml_processing.py`**
+- Runs HuggingFace models in parallel (Priority, Sentiment, Topic, Intent)
+- Handles multiple tickets simultaneously for efficiency
+- Returns standardized JSON with classifications 
+
+#### **`db_connector.py`**
+- Converts ML outputs into Qdrant-compatible vector points
+- Structures and stores ticket metadata with proper indexing
+- Handles efficient batch insertion of processed tickets into Qdrant
 
 The system employs **4 concurrent HuggingFace transformer models** for comprehensive ticket analysis:
 
@@ -47,7 +65,8 @@ The system employs **4 concurrent HuggingFace transformer models** for comprehen
 
 ### **2. Services Layer (`/services/`)**
 
-{diagram}
+![IMG_3237](https://github.com/user-attachments/assets/18d7860f-c6b0-4bfd-8b7f-66a740413b9d)
+
 
 #### **`llm_service.py`**
 - Handles LLM response generation
@@ -66,7 +85,8 @@ The system employs **4 concurrent HuggingFace transformer models** for comprehen
 
 ### **3. Utils Layer (`/utils/`)**
 
-{diagram}
+![IMG_3238](https://github.com/user-attachments/assets/b4e8b413-34be-4d40-84aa-8f2f7a926f6d)
+
 
 #### **`fetch.py`**
 - Retrieves processed tickets from Qdrant
@@ -152,13 +172,26 @@ The system employs **4 concurrent HuggingFace transformer models** for comprehen
 
 ---
 
-## 🔧 Environment Variables
+## 🔧 Environment Variables - Some of the variables are required to run the application locally. I have listed them down here : 
 
 ```bash
-QDRANT_URL=your_qdrant_endpoint
-QDRANT_API_KEY=your_api_key
-LLM_API_KEY=your_llm_key
-FLASK_ENV=production
+QDRANT_URL=https://400bce25-f49d-416f-9c6b-64e88a72a355.eu-west-2-0.aws.cloud.qdrant.io
+QDRANT_API_KEY=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
+QDRANT_COLLECTION=atlan-web-docs-3
+QDRANT_COLLECTION_2=Bulk_Tickets-2
+QDRANT_COLLECTION_3=chat-history-with-llm-per-user
+
+OPENAI_API_KEY=[Insert-your-api-key]
+OPENAI_CHAT_MODEL=gpt-4
+OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+QDRANT_VECTOR_NAME=doc_dense_vector
+QDRANT_TOP_K=3
+
+PRIORITY_MODEL=valhalla/distilbart-mnli-12-1
+SENTIMENT_EXACT_MODEL=facebook/bart-large-mnli
+GENERAL_SENTIMENT_MODEL=michellejieli/emotion_text_classifier
+KEYWORDS_MODEL=ilsilfverskiold/tech-keywords-extractor
+TOPIC_MODEL=facebook/bart-large-mnli
 ```
 
 ---
@@ -192,6 +225,7 @@ Create a `.env` file with your API keys:
 OPENAI_API_KEY=your_openai_api_key
 QDRANT_URL=your_qdrant_url
 QDRANT_API_KEY=your_qdrant_api_key
+These are given above
 ```
 
 ### **Run the Application**
@@ -218,13 +252,13 @@ python -m http.server 8080
 
 ## 📸 Project Screenshots
 
-{diagram}
+<img width="1489" height="859" alt="image" src="https://github.com/user-attachments/assets/61d76dfd-98aa-435e-8c33-35dc75c69e42" />
 
-{diagram}
+<img width="1489" height="859" alt="image" src="https://github.com/user-attachments/assets/47d7ab8c-f433-49b9-b3a4-e821b062f582" />
 
-{diagram}
+<img width="1489" height="859" alt="image" src="https://github.com/user-attachments/assets/8b98b84b-967b-4ddd-b16a-f955e8d76154" />
 
-{diagram}
+<img width="1497" height="861" alt="image" src="https://github.com/user-attachments/assets/fd07e11e-7220-4196-8b54-acb706b2d394" />
 
 ---
 
@@ -239,7 +273,7 @@ python -m http.server 8080
 ## 👥 Project Information
 
 ### **🎓 Developer Profile**
-
+- **Name**: Anshul Ajay Jethani
 - **Institution**: Pune Institute of Computer Technology
 - **Department**: Information Technology
 
@@ -268,7 +302,7 @@ Built using cutting-edge AI/ML technologies:
 
 ---
 
-> **Footer Note**: This project was developed as part of Atlan's AI Engineering Internship Challenge, demonstrating the power of modern AI/ML engineering with a focus on clean architecture, scalable design, and practical business applications.
+> **Final Note**: This project was developed as part of Atlan's AI Engineering Internship Challenge, demonstrating the power of modern AI/ML engineering with a focus on clean architecture, scalable design, and practical business applications.
 
 ---
 
