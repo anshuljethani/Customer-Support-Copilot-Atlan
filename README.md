@@ -189,7 +189,7 @@ QDRANT_TOP_K=3
 
 PRIORITY_MODEL=valhalla/distilbart-mnli-12-1
 SENTIMENT_EXACT_MODEL=michellejieli/emotion_text_classifier
-KEYWORDS_MODEL=ilsilfverskiold/tech-keywords-extractor
+KEYWORDS_MODEL=ml6team/keyphrase-generation-t5-base-inspec
 TOPIC_MODEL=MoritzLaurer/deberta-v3-base-zeroshot-v1
 ```
 
