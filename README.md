@@ -172,6 +172,8 @@ The system employs **4 concurrent HuggingFace transformer models** for comprehen
 
 ---
 
+## How did I scrape the RAG Data? Refer to the repository here : [Web Crawler](https://github.com/anshuljethani/Atlan-crawling)
+
 ## 🔧 Environment Variables - Some of the variables are required to run the application locally. I have listed them down here : 
 
 ```bash
