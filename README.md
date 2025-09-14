@@ -305,5 +305,3 @@ Built using cutting-edge AI/ML technologies:
 > **Final Note**: This project was developed as part of Atlan's AI Engineering Internship Challenge, demonstrating the power of modern AI/ML engineering with a focus on clean architecture, scalable design, and practical business applications.
 
 ---
-
-⭐ **If you found this project helpful, please give it a star!** ⭐
