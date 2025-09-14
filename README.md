@@ -203,20 +203,6 @@ TOPIC_MODEL=facebook/bart-large-mnli
 - 4GB+ RAM (8GB+ recommended for optimal performance)
 - 2GB+ free storage space
 
-### **Installation**
-
-```bash
-# Clone repository
-git clone <your-repo-url>
-cd Atlan-Final
-
-# Install dependencies
-pip install -r requirements.txt
-
-# If you encounter issues, try minimal installation:
-# pip install -r requirements-exact.txt
-```
-
 ### **Environment Setup**
 
 Create a `.env` file with your API keys:
@@ -225,7 +211,21 @@ Create a `.env` file with your API keys:
 OPENAI_API_KEY=your_openai_api_key
 QDRANT_URL=your_qdrant_url
 QDRANT_API_KEY=your_qdrant_api_key
-These are given above
+...
+Refer to the environment variables section above. 
+```
+
+### **Installation**
+
+```bash
+# Clone repository
+git clone <https://github.com/anshuljethani/Customer-Support-copilot-Atlan>
+
+# Install dependencies
+pip install -r requirements.txt
+
+# If you encounter issues, try minimal installation:
+# pip install -r requirements-exact.txt
 ```
 
 ### **Run the Application**
