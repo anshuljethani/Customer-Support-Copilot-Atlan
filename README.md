@@ -297,7 +297,7 @@ Built using cutting-edge AI/ML technologies:
 | Contact | Details |
 |---------|---------|
 | 📧 **Email** | anshuljethani777@gmail.com |
-| 💼 **LinkedIn** | [Anshul Jethani](https://linkedin.com/in/anshul-jethani) |
+| 💼 **LinkedIn** | [Anshul Jethani](https://www.linkedin.com/in/anshuljethani777/) |
 | 📱 **Phone** | +91 8530920104 |
 
 ---
